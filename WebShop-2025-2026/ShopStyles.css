@@ -13,3 +13,25 @@
 .navBar a:hover{
     color: rgb(45, 66, 250);
 }   
+.shoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: flex-start;
+    justify-items: center;
+    padding: 30px 0;
+    background: linear-gradient(90deg, #ffe5e0 0%, #fff7f0 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.shoes > * {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.shoes > *:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(45,66,250,0.10);
+}

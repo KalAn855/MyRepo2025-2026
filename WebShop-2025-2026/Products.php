@@ -12,18 +12,37 @@
     NavigationBar();
     ?>
 <h1>This are our products: </h1>
-<img src="Pictures/Shoe_1.webp" alt="Air Jordan 7" style="width:200px;height:auto;">
-<p>Air Jordan 7 - 699£</p>
-<img src="Pictures/Shoe_2.webp" alt="Air Jordan 7" style="width:200px;height:auto;">
-<p>Air Jordan 5 - 349£</p>
-<img src="Pictures/Shoe_3.jpg" alt="Air Jordan 7" style="width:200px;height:auto;">
-<p>Air Jordan 3 - 199£</p>
-<img src="Pictures/Shoe_4.jpg" alt="Air Jordan 7" style="width:200px;height:auto;">
-<p>Air Jordan 5 - 799£</p>
-<img src="Pictures/Shoe_5.webp" alt="Air Jordan 7" style="width:200px;height:auto;">
-<p>Air Jordan 7 - 269£</p>
-<img src="Pictures/Shoe_6.webp" alt="Air Jordan 7" style="width:200px;height:auto;">
-<p>Air Jordan 2 - 169£</p>
+<div class="shoes" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+    <?php
+    $products = [
+        ["img" => "Pictures/Shoe_1.webp", "alt" => "Air Jordan 7", "name" => "Air Jordan 7", "price" => "699£"],
+        ["img" => "Pictures/Shoe_2.webp", "alt" => "Air Jordan 5", "name" => "Air Jordan 5", "price" => "349£"],
+        ["img" => "Pictures/Shoe_3.jpg", "alt" => "Air Jordan 3", "name" => "Air Jordan 3", "price" => "199£"],
+        ["img" => "Pictures/Shoe_4.jpg", "alt" => "Air Jordan 5", "name" => "Air Jordan 5", "price" => "799£"],
+        ["img" => "Pictures/Shoe_5.webp", "alt" => "Air Jordan 7", "name" => "Air Jordan 7", "price" => "269£"],
+        ["img" => "Pictures/Shoe_6.webp", "alt" => "Air Jordan 2", "name" => "Air Jordan 2", "price" => "169£"],
+        ["img" => "Pictures/Shoe_7.png", "alt" => "Jordan running", "name" => "Jordan running", "price" => "267£"],
+        ["img" => "Pictures/Shoe_8.jpg", "alt" => "Nike schube", "name" => "Nike schube", "price" => "139£"],
+        ["img" => "Pictures/Shoe_9.webp", "alt" => "Nike low dunk 3", "name" => "Nike low dunk 3", "price" => "149£"],
+        ["img" => "Pictures/Shoe_10.webp", "alt" => "Nike Cortez pink", "name" => "Nike Cortez pink", "price" => "199£"],
+        ["img" => "Pictures/Shoe_11.webp", "alt" => "Nike DownShifter", "name" => "Nike DownShifter", "price" => "159£"],
+        ["img" => "Pictures/Shoe_12.webp", "alt" => "Nike Lebron Witness", "name" => "Nike Lebron Witness", "price" => "249£"],
+    ];
+
+    foreach ($products as $product) {
+        echo '<div style="flex: 0 0 220px; text-align: center;">';
+        echo '<img src="' . $product["img"] . '" alt="' . $product["alt"] . '" style="width:200px;"><br>';
+        echo $product["name"] . ' - ' . $product["price"] . '<br>';
+        echo 'Size: ';
+        echo '<select name="size">';
+        for ($size = 38; $size <= 45; $size++) {
+            echo '<option value="' . $size . '">' . $size . '</option>';
+        }
+        echo '</select>';
+        echo '</div>';
+    }
+    ?>
+</div>
 
 </body>
 </html>
