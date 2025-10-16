@@ -13,6 +13,23 @@
 .navBar a:hover{
     color: rgb(45, 66, 250);
 }   
+
+.highlight {
+    color: #caa8ff;
+    position: relative;
+}
+ 
+.highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #a36bff, #6c63ff, #5900bf);
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.6);
+    border-radius: 2px;
+}
 .shoes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

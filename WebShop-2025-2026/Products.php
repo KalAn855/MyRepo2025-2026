@@ -9,9 +9,14 @@
 <body>
     <?php
     include_once ("CommonCode.php");
-    NavigationBar();
+    NavigationBar("Products");
     ?>
-<h1>This are our products: </h1>
+<div class="welcome" style="background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); border-radius: 18px; box-shadow: 0 6px 24px rgba(60,72,100,0.12); padding: 48px 32px; margin: 48px auto 0 auto; max-width: 540px; text-align: center;">
+    <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.8rem; color: #3b3b5c; margin-bottom: 18px; letter-spacing: 1px;">
+        These are our products:
+    </h1>
+</div>
+
 <div class="shoes" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
     <?php
     $products = [
