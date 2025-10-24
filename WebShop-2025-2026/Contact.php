@@ -11,11 +11,11 @@
     include_once ("CommonCode.php");
     NavigationBar("Contact");
     ?>
-    <div class="welcome" style="background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); border-radius: 18px; box-shadow: 0 6px 24px rgba(60,72,100,0.12); padding: 48px 32px; margin: 48px auto 0 auto; max-width: 540px; text-align: center;">
-        <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.2rem; color: #3b3b5c; margin-bottom: 18px; letter-spacing: 1px;">
+    <div class="welcome divCentered" >
+        <h1 class ="fonth1">
             This is our contact information
         </h1>
-        <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; color: #5a5a7a; margin-bottom: 12px;">
+        <p class = "fontp">
             <strong>Email:</strong> <span style="color: #6366f1; font-weight: 600;">info@webshop2025.com</span>
         </p>
         <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; color: #5a5a7a; margin-bottom: 12px;">
