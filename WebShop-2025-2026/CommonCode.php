@@ -9,7 +9,7 @@ if (isset($_GET["lang"])) {
 $arrayOfTranslations = [];
 
 $fileTranslation = fopen("Translation.csv", "r");
-while(!feof($fileTranslation)) {
+while (!feof($fileTranslation)) {
     $lineFromFile = fgets($fileTranslation);
     $piecesOfTranslation = explode(";", $lineFromFile);
     //$arrayOfTranslations[$piecesOfTranslation[0]] = ($language == "english") ? $piecesOfTranslation[1] : $piecesOfTranslation[2];
@@ -27,38 +27,39 @@ function NavigationBar($current)
     global $arrayOfTranslations;
     $navigationBarLinks = [
         $arrayOfTranslations["HomeBtn"] => "Home.php",
-         $arrayOfTranslations["ContactBtn"] => "Contact.php",
-         $arrayOfTranslations["ProductBtn"] => "Products.php",
-         $arrayOfTranslations["RegisterBtn"] => "Register.php",
+        $arrayOfTranslations["ContactBtn"] => "Contact.php",
+        $arrayOfTranslations["ProductBtn"] => "Products.php",
+        $arrayOfTranslations["RegisterBtn"] => "Register.php",
     ]
 ?>
     <div class="navBar">
         <?php
         foreach ($navigationBarLinks as $keyVariable => $valueVariable) {
         ?>
-            <a <?= ($current == $keyVariable) ? 'class="active"' : ''; ?> href="<?= $valueVariable ?>?lang=<?= $language?>" class="navLink"><?= $keyVariable ?></a>
+            <a <?= ($current == $keyVariable) ? 'class="active"' : ''; ?> href="<?= $valueVariable ?>?lang=<?= $language ?>" class="navLink"><?= $keyVariable ?></a>
         <?php
         }
         ?>
-        <form>
-            <select name= lang onchange="this.form.submit()">
-            <option value="english" <?php if ($language == "english") print "selected"; ?>>English</option>
-            <option value="russian" <?php if ($language == "russian") print "selected"; ?>>Russian</option>
+        <form name="languageForm" method="GET" class="langForm">
+            <select name=lang onchange="this.form.submit()">
+                <option value="english" <?php if ($language == "english") print "selected"; ?>>English</option>
+                <option value="russian" <?php if ($language == "russian") print "selected"; ?>>Russian</option>
             </select>
         </form>
     </div>
 <?php
 }
- 
 
 
-function userAlredyResgistred($checkedUser) {
+
+function userAlredyResgistred($checkedUser)
+{
     /* this function checks if $chekedUser string is an existing user in client.csv
     if the given user is alredy in the file we return true -> user alredy exists
     if not we return false*/
     $bReturnValue = false;
     $fHandler = fopen("Client.csv", "r");
-    while (!feof($fHandler)){
+    while (!feof($fHandler)) {
         $newLine = fgets($fHandler);
         $items = explode(";", $newLine);
         if ($items[0] == $checkedUser) {
@@ -68,4 +69,3 @@ function userAlredyResgistred($checkedUser) {
     fclose($fHandler);
     return $bReturnValue;
 }
- 

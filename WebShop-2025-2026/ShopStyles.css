@@ -21,42 +21,49 @@
     position: relative;
 }
 
-.highlight::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #a36bff, #6c63ff, #5900bf);
-    box-shadow: 0 0 10px rgba(108, 99, 255, 0.6);
-    border-radius: 2px;
-}
 
 .shoes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    align-items: flex-start;
-    justify-items: center;
-    padding: 30px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 60px;
+ 
+}
+
+.OneShoe{
+    margin: 20px;
+       background-color: #ffffff;   
+}
+
+.shoeImage{
+    width: 200px;
+}
+/*
+.shoes > * {
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-}
-
-.shoes>* {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    
+    
+}
+*/
+.shoes > *:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(45, 66, 250, 0.15);
 }
 
-.shoes>*:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 8px 24px rgba(45, 66, 250, 0.10);
+/*
+.shoes img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    object-fit: cover;
 }
-
+    */
 body {
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     font-size: 16px;
@@ -94,3 +101,8 @@ html {
     color: #5a5a7a;
     margin-bottom: 12px;
 }
+/*
+.shoeImage {
+    width: 200px;
+}
+    */

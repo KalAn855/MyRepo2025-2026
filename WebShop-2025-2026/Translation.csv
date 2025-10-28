@@ -1,6 +1,8 @@
 Key;EnglishText;RussianText
-HomeBtn;Home;Glavnaya
-ContactBtn;Contact;Infarmazia
-ProductBtn;Products;Veschi
-RegisterBtn;Register;Registrazia
-HomeText;Welcome to Our Web Shop!;Privetstvuem na nash website
+HomeBtn;Home;Главная
+ContactBtn;Contact;Страница контактов
+ProductBtn;Products;Продукты
+RegisterBtn;Register;Регистрация
+HomeText;Welcome to Our Web Shop!;Добро пожаловать в наш интернет-магазин!
+HomeP;Browse our products and enjoy your shopping experience.;Просмотрите наши товары и наслаждайтесь процессом покупок.
+ContactT;This is our contact information;Это наша контактная информация

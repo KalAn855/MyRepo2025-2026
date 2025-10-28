@@ -12,9 +12,9 @@
     NavigationBar("Home");
     ?>
     <div class="welcome divCentered" >
-        <h1> <?= $arrayOfTranslations["HomeText"] ?></h1>
+    <h1> <?= $arrayOfTranslations["HomeText"] ?></h1>
         <p class="fontp">
-            Browse our <span style="color: #6366f1; font-weight: 600;">products</span> and enjoy your shopping experience.
+            <?= $arrayOfTranslations["HomeP"] ?>
         </p>
     </div>
 </body>

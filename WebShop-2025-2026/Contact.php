@@ -13,7 +13,7 @@
     ?>
     <div class="welcome divCentered" >
         <h1 class ="fonth1">
-            This is our contact information
+            <?= $arrayOfTranslations["ContactT"] ?>
         </h1>
         <p class = "fontp">
             <strong>Email:</strong> <span style="color: #6366f1; font-weight: 600;">info@webshop2025.com</span>
