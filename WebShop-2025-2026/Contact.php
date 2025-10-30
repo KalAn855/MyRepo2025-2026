@@ -16,16 +16,16 @@
             <?= $arrayOfTranslations["ContactT"] ?>
         </h1>
         <p class = "fontp">
-            <strong>Email:</strong> <span style="color: #6366f1; font-weight: 600;">info@webshop2025.com</span>
+            <strong><?= $arrayOfTranslations["ContactEmail"] ?></strong> <span style="color: #6366f1; font-weight: 600;">info@webshop2025.com</span>
         </p>
         <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; color: #5a5a7a; margin-bottom: 12px;">
-            <strong>Phone:</strong> <span style="color: #6366f1; font-weight: 600;">+352 621 710 327</span>
+            <strong><?= $arrayOfTranslations["ContactPhone"] ?></strong> <span style="color: #6366f1; font-weight: 600;">+352 621 710 327</span>
         </p>
         <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; color: #5a5a7a; margin-bottom: 12px;">
-            <strong>Address:</strong> <span style="color: #6366f1; font-weight: 600;">Rue de Luxembourg 18, L-1228</span>
+            <strong><?= $arrayOfTranslations["ContactAddress"] ?></strong> <span style="color: #6366f1; font-weight: 600;">Rue de Luxembourg 18, L-1228</span>
         </p>
         <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; color: #5a5a7a;">
-            <strong>Business Hours:</strong> <span style="color: #6366f1; font-weight: 600;">Mon-Fri, 9:00 AM - 5:00 PM</span>
+            <strong><?= $arrayOfTranslations["ContactHours"] ?></strong> <span style="color: #6366f1; font-weight: 600;">Mon-Fri, 9:00 AM - 5:00 PM</span>
         </p>
     </div>
 </body>

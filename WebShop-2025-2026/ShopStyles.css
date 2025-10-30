@@ -21,7 +21,7 @@
     position: relative;
 }
 
-
+/*
 .shoes {
     display: flex;
     justify-content: space-around;
@@ -38,7 +38,6 @@
 .shoeImage{
     width: 200px;
 }
-/*
 .shoes > * {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
@@ -50,12 +49,11 @@
     
 }
 */
-.shoes > *:hover {
+/*.shoes > *:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 8px 24px rgba(45, 66, 250, 0.15);
 }
 
-/*
 .shoes img {
     width: 100%;
     height: auto;
@@ -106,3 +104,29 @@ html {
     width: 200px;
 }
     */
+    .allDivs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.divStyle {
+  background-color: #ffffff;
+  color: rgb(54, 0, 78);
+  border-radius: 10px;
+  padding: 10px;
+  width: 220px;
+  text-align: center;
+}
+
+.productNameDivStyle {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.colorWite {
+  color: #240077;
+  font-size: 1.1em;
+  margin: 6px 0;
+}

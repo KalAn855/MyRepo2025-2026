@@ -32,10 +32,10 @@
     if ($bShowForm) {
     ?>
     <form method="POST" class="divCentered">
-        <h1 class ="fonth1">Registration form</h1>
-        <p class ="fontp">Choose an User Name</div><br>
+        <h1 class ="fonth1"><?= $arrayOfTranslations["RegistrationForm"] ?></h1>
+        <p class ="fontp"><?= $arrayOfTranslations["RegistrationName"] ?></div><br>
         <input type="test" name="userName"><br>
-        <p class ="fontp">Choose a password</div><br>
+        <p class ="fontp"><?= $arrayOfTranslations["RegistrationPassword"] ?></div><br>
         <input type="password" name="psw"><br>
         <input type="password" name="pswAgain"><br>
         <input type="submit" value="Register">
