@@ -14,3 +14,12 @@ ProductsT;This are our products:;Это наши продукты:
 RegistrationForm;Registration Form;Форма регистрации
 RegistrationName;Choose an User Name;Выберите имя пользователя
 RegistrationPassword;Choose a password;Выберите пароль
+RegistrationEmail;Email;Электронная почта
+RegistrationPhone;Phone;Телефон
+LoginBtn;Login;Войти
+logincheck;Checking;Проверка
+loginsuccess;You logged in successfully ;Вы успешно вошли в систему
+loginfail;Your login failed;Вход не выполнен
+loginuser;User;Пользователь
+loginpassword;Password;Пароль
+LoginT;Login;Войти

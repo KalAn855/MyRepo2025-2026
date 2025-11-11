@@ -30,13 +30,14 @@ function NavigationBar($current)
         $arrayOfTranslations["ContactBtn"] => "Contact.php",
         $arrayOfTranslations["ProductBtn"] => "Products.php",
         $arrayOfTranslations["RegisterBtn"] => "Register.php",
+        $arrayOfTranslations["LoginBtn"] => "Login.php",
     ]
 ?>
     <div class="navBar">
         <?php
         foreach ($navigationBarLinks as $keyVariable => $valueVariable) {
         ?>
-            <a <?= ($current == $keyVariable) ? 'class="active"' : ''; ?> href="<?= $valueVariable ?>?lang=<?= $language ?>" class="navLink"><?= $keyVariable ?></a>
+            <a <?= ($current == $keyVariable) ? 'class="highlight"' : ''; ?> href="<?= $valueVariable ?>?lang=<?= $language ?>" class="navLink"><?= $keyVariable ?></a>
         <?php
         }
         ?>
@@ -47,11 +48,29 @@ function NavigationBar($current)
             </select>
         </form>
     </div>
+    
 <?php
 }
-
-
-
+function verifyUserCredentials($checkedUser, $checkedPsw)
+{
+ 
+    $fHandler = @fopen("Client.csv", "r");
+    if (!$fHandler) return false;
+    while (!feof($fHandler)) {
+        $newLine = trim(fgets($fHandler));
+        if ($newLine === '') continue;
+        $items = explode(";", $newLine);
+        if (isset($items[0]) && strtolower(trim($items[0])) === 'username') continue;
+        $fileUser = isset($items[0]) ? trim($items[0]) : '';
+        $filePsw = isset($items[1]) ? trim($items[1]) : '';
+        if ($fileUser === $checkedUser && $filePsw === $checkedPsw) {
+            fclose($fHandler);
+            return true;
+        }
+    }
+    fclose($fHandler);
+    return false;
+}
 function userAlredyResgistred($checkedUser)
 {
     /* this function checks if $chekedUser string is an existing user in client.csv
@@ -68,4 +87,5 @@ function userAlredyResgistred($checkedUser)
     }
     fclose($fHandler);
     return $bReturnValue;
+
 }

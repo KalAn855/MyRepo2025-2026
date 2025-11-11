@@ -11,6 +11,7 @@
     include_once ("CommonCode.php");
     NavigationBar("Register");
     ?>
+    <div class ="text">
     <?php
     $bShowForm = true;
     if (isset($_POST["userName"], $_POST["psw"], $_POST["pswAgain"])) {
@@ -31,14 +32,19 @@
     }
     if ($bShowForm) {
     ?>
+    </div>
     <form method="POST" class="divCentered">
         <h1 class ="fonth1"><?= $arrayOfTranslations["RegistrationForm"] ?></h1>
         <p class ="fontp"><?= $arrayOfTranslations["RegistrationName"] ?></div><br>
-        <input type="test" name="userName"><br>
+        <input type="test" name="userName">
         <p class ="fontp"><?= $arrayOfTranslations["RegistrationPassword"] ?></div><br>
         <input type="password" name="psw"><br>
-        <input type="password" name="pswAgain"><br>
-        <input type="submit" value="Register">
+        <input type="password" name="pswAgain">
+        <p class ="fontp"><?= $arrayOfTranslations["RegistrationEmail"] ?></div><br>
+        <input type="email" name="Email">
+        <p class ="fontp"><?= $arrayOfTranslations["RegistrationPhone"] ?></div><br>
+        <input type="tel" name="PhoneNumber"><br>
+        <input type="submit" value="Register"><br>
     </form>
     <?php
     }

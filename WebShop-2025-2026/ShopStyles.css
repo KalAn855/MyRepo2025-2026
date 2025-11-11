@@ -8,7 +8,7 @@
 
 .navBar a {
     text-decoration: none;
-    color: black;
+    color: rgb(77, 34, 105);
     font-weight: bold;
 }
 
@@ -17,51 +17,13 @@
 }
 
 .highlight {
-    color: #caa8ff;
-    position: relative;
+    background: linear-gradient(90deg, #b8a7e9, #a678ff);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 10px;
+    box-shadow: 0 0 14px rgba(160, 100, 255, 0.6);
 }
-
-/*
-.shoes {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 40px 60px;
  
-}
-
-.OneShoe{
-    margin: 20px;
-       background-color: #ffffff;   
-}
-
-.shoeImage{
-    width: 200px;
-}
-.shoes > * {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    
-    
-}
-*/
-/*.shoes > *:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(45, 66, 250, 0.15);
-}
-
-.shoes img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    object-fit: cover;
-}
-    */
 body {
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     font-size: 16px;
@@ -76,13 +38,16 @@ html {
     min-height: 100%;
 }
 
-
+.text {
+    color:white;
+}
 .divCentered {
     background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
     border-radius: 18px;
     box-shadow: 0 6px 24px rgba(60, 72, 100, 0.12);
     padding: 48px 32px;
     margin: 48px auto 0 auto;
+    margin-bottom: 48px;
     max-width: 540px;
     text-align: center;
 }
@@ -99,11 +64,7 @@ html {
     color: #5a5a7a;
     margin-bottom: 12px;
 }
-/*
-.shoeImage {
-    width: 200px;
-}
-    */
+
     .allDivs {
   display: flex;
   flex-wrap: wrap;
