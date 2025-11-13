@@ -48,12 +48,12 @@ function NavigationBar($current)
             </select>
         </form>
     </div>
-    
+
 <?php
 }
 function verifyUserCredentials($checkedUser, $checkedPsw)
 {
- 
+
     $fHandler = @fopen("Client.csv", "r");
     if (!$fHandler) return false;
     while (!feof($fHandler)) {
@@ -71,11 +71,8 @@ function verifyUserCredentials($checkedUser, $checkedPsw)
     fclose($fHandler);
     return false;
 }
-function userAlredyResgistred($checkedUser)
+function userAlreadyRegistered($checkedUser)
 {
-    /* this function checks if $chekedUser string is an existing user in client.csv
-    if the given user is alredy in the file we return true -> user alredy exists
-    if not we return false*/
     $bReturnValue = false;
     $fHandler = fopen("Client.csv", "r");
     while (!feof($fHandler)) {
@@ -87,5 +84,4 @@ function userAlredyResgistred($checkedUser)
     }
     fclose($fHandler);
     return $bReturnValue;
-
 }

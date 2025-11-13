@@ -23,7 +23,7 @@
     border-radius: 10px;
     box-shadow: 0 0 14px rgba(160, 100, 255, 0.6);
 }
- 
+
 body {
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     font-size: 16px;
@@ -39,8 +39,9 @@ html {
 }
 
 .text {
-    color:white;
+    color: white;
 }
+
 .divCentered {
     background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
     border-radius: 18px;
@@ -51,6 +52,7 @@ html {
     max-width: 540px;
     text-align: center;
 }
+
 .fonth1 {
     font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 2.8rem;
@@ -58,6 +60,7 @@ html {
     margin-bottom: 18px;
     letter-spacing: 1px;
 }
+
 .fontp {
     font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 1.1rem;
@@ -65,29 +68,29 @@ html {
     margin-bottom: 12px;
 }
 
-    .allDivs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+.allDivs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
 .divStyle {
-  background-color: #ffffff;
-  color: rgb(54, 0, 78);
-  border-radius: 10px;
-  padding: 10px;
-  width: 220px;
-  text-align: center;
+    background-color: #ffffff;
+    color: rgb(54, 0, 78);
+    border-radius: 10px;
+    padding: 10px;
+    width: 220px;
+    text-align: center;
 }
 
 .productNameDivStyle {
-  font-weight: bold;
-  margin-bottom: 8px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .colorWite {
-  color: #240077;
-  font-size: 1.1em;
-  margin: 6px 0;
+    color: #240077;
+    font-size: 1.1em;
+    margin: 6px 0;
 }
