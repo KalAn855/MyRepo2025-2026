@@ -21,9 +21,9 @@
             $aShowForm = false;
             print($arrayOfTranslations["logincheck"] . "<br>");
             $user = isset($_POST["userName"]) ? trim($_POST["userName"]) : '';
-            $psw = isset($_POST["psw"]) ? trim($_POST["psw"]) : '';
+            $pswd = isset($_POST["psw"]) ? trim($_POST["psw"]) : '';
 
-            if (verifyUserCredentials($user, $psw) === true) {
+            if (verifyUserCredentials($user, $pswd) === true) {
                 // successful login
                 print($arrayOfTranslations["loginsuccess"] . htmlspecialchars($user));
             } else {
