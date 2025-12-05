@@ -24,9 +24,13 @@
             $pswd = isset($_POST["psw"]) ? trim($_POST["psw"]) : '';
 
             if (verifyUserCredentials($user, $pswd) === true) {
-                // successful login
-                print($arrayOfTranslations["loginsuccess"] . htmlspecialchars($user));
-            } else {
+    // successful login
+        $_SESSION["UserLogged"] = true;
+        $_SESSION["Username"] = $user;
+        header("Location: Home.php"); //redirect to home page
+        exit();
+    }
+    else {
                 // failed login
                 print($arrayOfTranslations["loginfail"]);
                 $aShowForm = true;

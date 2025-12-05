@@ -12,6 +12,10 @@
     font-weight: bold;
 }
 
+.btnLogout{
+    margin-right:130px;
+}
+
 .navBar a:hover {
     color: rgb(45, 66, 250);
 }

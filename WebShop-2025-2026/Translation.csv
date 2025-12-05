@@ -23,3 +23,5 @@ loginfail;Your login failed;Вход не выполнен
 loginuser;User;Пользователь
 loginpassword;Password;Пароль
 LoginT;Login;Войти
+WelcomeBtn; Welcome,; Добро пожаловать,
+AdminBtn;Admin Panel;Администратор

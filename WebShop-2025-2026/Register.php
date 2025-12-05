@@ -23,9 +23,10 @@
             if (($_POST["psw"] == $_POST["pswAgain"]) && (!userAlreadyRegistered($_POST["userName"]))) {
                 print("Welcome you are now registered!");
                 $psw = password_hash($_POST["psw"], PASSWORD_DEFAULT);
+                $adminUser = "no";
                 //append new user to Client.csv
                 $fHandler = fopen("Client.csv", "a");
-                fwrite($fHandler, "\n" . $_POST["userName"] . ";" . $psw);
+                fwrite($fHandler, "\n" . $_POST["userName"] . ";" . $psw. ";" . $adminUser);
                 fclose($fHandler);
             } else {
                 $bShowForm = true;

@@ -10,8 +10,9 @@ if (isset($_POST["logout"])) {
 
 
 
-if (!isset($_SESSION["UserLogged"])) {
+if (!isset($_SESSION["UserLogged"]) && !isset($_SESSION["Admin"])) {
     $_SESSION["UserLogged"] = false;
+    $_SESSION["Admin"] = "no";
 }
 
 
@@ -50,19 +51,34 @@ function NavigationBar($currentPage)
             <?= $arrayOfTranslations["ProductBtn"] ?>
         </a>
 
-        <a href="Register.php?lang=<?= $language ?>"
-            <?= ($currentPage === $arrayOfTranslations["RegisterBtn"]) ? "class='highlight'" : "" ?>>
-            <?= $arrayOfTranslations["RegisterBtn"] ?>
-        </a>
-
         <?php if (!$_SESSION["UserLogged"]) : ?>
+            <a href="Register.php?lang=<?= $language ?>"
+                <?= ($currentPage === $arrayOfTranslations["RegisterBtn"]) ? "class='highlight'" : "" ?>>
+                <?= $arrayOfTranslations["RegisterBtn"] ?>
+            </a>
             <a href="Login.php?lang=<?= $language ?>"
                 <?= ($currentPage === $arrayOfTranslations["LoginBtn"]) ? "class='highlight'" : "" ?>>
                 <?= $arrayOfTranslations["LoginBtn"] ?>
             </a>
         <?php else : ?>
-            <span>Welcome, <?= $_SESSION["Username"] ?>!</span>
+            <span> <?=$arrayOfTranslations["WelcomeBtn"] . $_SESSION["Username"] ?>!</span>
         <?php endif; ?>
+        <?php if ($_SESSION["UserLogged"]) : ?>
+            <form method="post" style="display:inline;">
+                <input type="hidden" name="logout" value="1">
+                <button class="btnLogout"type="submit">Logout</button>
+                <?php
+        if ($_SESSION["Admin"] === "yes") {
+            ?>
+                <a href="Admin.php?lang=<?= $language ?>"
+                    <?= ($currentPage === $arrayOfTranslations["AdminBtn"]) ? "class='highlight'" : "" ?>>
+                    <?= $arrayOfTranslations["AdminBtn"] ?>
+                </a>
+        </form>
+          <?php  
+        }
+        endif; ?>
+
 
         <!-- Language selector -->
         <form method="get" class="langForm" style="display:inline-block; margin-left:20px;">
@@ -80,26 +96,57 @@ function NavigationBar($currentPage)
 
 
 function verifyUserCredentials($checkedUser, $checkedPsw)
-
 {
-
+    global $adminUser;
     $fHandler = @fopen("Client.csv", "r");
     if (!$fHandler) return false;
+
     while (($line = fgets($fHandler)) !== false) {
         $line = trim($line);
         if ($line === "") continue;
+
         $items = explode(";", $line);
-        if (strtolower($items[0]) === "username") continue; 
+        if (strtolower($items[0]) === "username") continue;
+
         $fileUser = trim($items[0] ?? "");
-        $filePsw = trim($items[1] ?? "");
-        if ($fileUser === $checkedUser && password_verify($checkedPsw, $filePsw)) {
+        $filePsw  = trim($items[1] ?? "");
+
+        if ($fileUser === $checkedUser) {
+           
+
+            // If CSV contains plaintext password — allow direct match
+            if ($filePsw === $checkedPsw) {
+                 if ($items[2] == "yes") {
+                    $_SESSION["Admin"] = $items[2];
+                }
+                else {
+                    $_SESSION["Admin"] = "no";
+                }
+                fclose($fHandler);
+                return true;
+            }
+
+            // Otherwise check bcrypt hash
+            if (password_verify($checkedPsw, $filePsw)) { 
+                if ($items[2] == "yes") {
+                    $_SESSION["Admin"] = $items[2];
+                }
+                else {
+                    $_SESSION["Admin"] = "no";
+                }
+                fclose($fHandler);
+                return true;
+            }
+            // Username found but password wrong
             fclose($fHandler);
-            return true;
+            return false;
         }
     }
+
     fclose($fHandler);
     return false;
 }
+
 
 function userAlreadyRegistered($checkedUser)
 {
