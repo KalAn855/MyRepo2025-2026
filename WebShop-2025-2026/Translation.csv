@@ -25,3 +25,12 @@ loginpassword;Password;Пароль
 LoginT;Login;Войти
 WelcomeBtn; Welcome,; Добро пожаловать,
 AdminBtn;Admin Panel;Администратор
+NameTextEn;English Name;Английское имя
+NameTextRu;Russian Name;Русское имя
+FileName;Image File Name (example: brakepads.jpg);Имя файла изображения (пример: brakepads.jpg)
+Price;Price;Цена
+DescEN;English Description;Английское описание
+DescRU;Russian Description;Русское описание
+CreateBtn;Create Product;Создать продукт
+WelcomeText;Welcome,;Добро пожаловать, 
+Admin; (Admin); (Администратор)

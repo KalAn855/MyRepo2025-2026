@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-var_dump($_SESSION);
 if (isset($_POST["logout"])) {
     session_unset();
     session_destroy();
@@ -70,11 +69,11 @@ function NavigationBar($currentPage)
                 <?php
         if ($_SESSION["Admin"] === "yes") {
             ?>
-                <a href="Admin.php?lang=<?= $language ?>"
+        </form>
+        <a href="Admin.php?lang=<?= $language ?>"
                     <?= ($currentPage === $arrayOfTranslations["AdminBtn"]) ? "class='highlight'" : "" ?>>
                     <?= $arrayOfTranslations["AdminBtn"] ?>
                 </a>
-        </form>
           <?php  
         }
         endif; ?>

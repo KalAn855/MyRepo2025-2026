@@ -12,8 +12,8 @@
     font-weight: bold;
 }
 
-.btnLogout{
-    margin-right:130px;
+.btnLogout {
+    margin-right: 130px;
 }
 
 .navBar a:hover {
@@ -28,6 +28,7 @@
     box-shadow: 0 0 14px rgba(160, 100, 255, 0.6);
 }
 
+/* Global page theme */
 body {
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     font-size: 16px;
@@ -46,17 +47,18 @@ html {
     color: white;
 }
 
+/* Centered card used across pages */
 .divCentered {
     background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
     border-radius: 18px;
     box-shadow: 0 6px 24px rgba(60, 72, 100, 0.12);
     padding: 48px 32px;
-    margin: 48px auto 0 auto;
-    margin-bottom: 48px;
+    margin: 48px auto;
     max-width: 540px;
     text-align: center;
 }
 
+/* Header styles */
 .fonth1 {
     font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 2.8rem;
@@ -72,6 +74,7 @@ html {
     margin-bottom: 12px;
 }
 
+/* Product list */
 .allDivs {
     display: flex;
     flex-wrap: wrap;
@@ -97,4 +100,65 @@ html {
     color: #240077;
     font-size: 1.1em;
     margin: 6px 0;
+}
+
+/* UPDATED — Admin panel now uses same style as other page cards */
+.adminBox {
+    max-width: 540px;
+    margin: 48px auto;
+    padding: 32px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(60, 72, 100, 0.12);
+    text-align: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.adminBox h1,
+.adminBox h2 {
+    color: #3b3b5c;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.adminBox label {
+    font-weight: bold;
+    display: block;
+    margin-top: 12px;
+    color: #3b3b5c;
+}
+
+.adminBox input,
+.adminBox textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Matches buttons on your other pages */
+.adminBox .btn {
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #b8a7e9, #a678ff);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(160, 100, 255, 0.6);
+    transition: 0.2s ease-in-out;
+}
+
+.adminBox .btn:hover {
+    transform: scale(1.05);
+}
+
+.message {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
