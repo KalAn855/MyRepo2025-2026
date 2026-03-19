@@ -185,4 +185,60 @@ html {
     outline: none;
     background-color: #f0f8ff; /* light highlight on hover */
 }
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+}
 
+th, td {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: lightcoral;
+    color: rgb(77, 34, 105);
+}
+.removeBtn {
+    padding: 6px 12px;
+    background: linear-gradient(90deg, #ff6b6b, #ff3b3b);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s ease-in-out;
+}
+.removeBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+.removeBtn:active {
+    transform: scale(0.95);
+}
+.buyBtn {
+    padding: 10px 18px;
+    background: linear-gradient(90deg, #b8a7e9, #a678ff);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+    box-shadow: 0 0 10px rgba(160, 100, 255, 0.6);
+    transition: all 0.2s ease-in-out;
+}
+.buyBtn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #a678ff, #8f5cff);
+}
+
+.buyBtn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(160, 100, 255, 0.4);
+}

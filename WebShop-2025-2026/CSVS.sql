@@ -29,7 +29,7 @@ insert into Products
 (ProductNameEN, ImageLink, Price, DescriptionEN, DescriptionRU, ProductNameRU)
 values
 ('Air Jordan 7', 'Shoe_1.webp', '699£', 'They are stylish and iconic.', 'Они стильные и культовые.', 'Эйр Джордан 7'),
-('Air Jordan 5', 'Shoe_2.webp', '349£', 'They are stylish and iconic.', 'Они стильные и культовые.', 'Эйр Джордан 5'),
+('Air Jordan 4', 'Shoe_2.webp', '349£', 'They are stylish and iconic.', 'Они стильные и культовые.', 'Эйр Джордан 4'),
 ('Air Jordan 3', 'Shoe_3.jpg', '199£', 'They are stylish and iconic.', 'Они стильные и культовые.', 'Эйр Джордан 3'),
 ('Air Jordan 5', 'Shoe_4.jpg', '799£', 'They are stylish and iconic.', 'Они стильные и культовые.', 'Эйр Джордан 5'),
 ('Air Jordan 7', 'Shoe_5.webp', '269£', 'They are stylish and iconic.', 'Они стильные и культовые.', 'Эйр Джордан 7'),
@@ -83,6 +83,10 @@ values
 ('EmptyCart', 'Your cart is currently empty.', 'Ваша корзина сейчас пуста'),
 ('Total', 'Total', 'Итого'),
 ('Checkout', 'Checkout', 'Оформить заказ'),
+('RemoveBtn','Remove','Удалить'),
+('ItemName','Item','Товар'),
+('Quantity','Quantity','Количество'),
+('BuyBtn','Buy','Купить'),
 ('Admin',' (Admin)',' (Администратор)');
 
 insert into Client

@@ -35,9 +35,9 @@
                     <div class="colorWite"><?= $row["Price"] ?></div>
                     <div><?= $row[($language == "english") ? "DescriptionEN" : "DescriptionRU"] ?></div>
                     <form method="POST">
-                        <input type="text" placeholder="quantity" name="quantity" required>
+                        <input type="number" name="quantity" value="1" min="1" required>
                         <input type="hidden" value="<?= $row["id"] ?>" name="productId">
-                        <input type="submit" value="Buy">
+                        <input type="submit" value="<?= $arrayOfTranslations["BuyBtn"] ?>" class="buyBtn">
                     </form>
                 </div>
         <?php
