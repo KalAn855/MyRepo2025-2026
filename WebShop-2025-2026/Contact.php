@@ -11,6 +11,7 @@
 <body>
     <?php
     include_once("CommonCode.php");
+    include_once("Database.php");
     NavigationBar($arrayOfTranslations["ContactBtn"]);
     ?>
     <div class="welcome divCentered">

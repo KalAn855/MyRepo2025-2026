@@ -78,6 +78,11 @@ values
 ('DescRU','Russian Description','Русское описание'),
 ('CreateBtn','Create Product','Создать продукт'),
 ('WelcomeText','Welcome,','Добро пожаловать, '),
+('CartTitle', 'Your Cart', 'Ваша корзина'),
+('CartSubtitle', 'Your selected items will appear here', 'Выбранные вами товары появятся здесь'),
+('EmptyCart', 'Your cart is currently empty.', 'Ваша корзина сейчас пуста'),
+('Total', 'Total', 'Итого'),
+('Checkout', 'Checkout', 'Оформить заказ'),
 ('Admin',' (Admin)',' (Администратор)');
 
 insert into Client

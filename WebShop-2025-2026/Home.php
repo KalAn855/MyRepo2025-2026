@@ -10,6 +10,7 @@
 
 <body>
     <?php
+    include_once("Database.php");
     include_once("CommonCode.php");
     NavigationBar($arrayOfTranslations["HomeBtn"]);
     ?>

@@ -10,8 +10,10 @@
 
 <body>
     <?php
+    include_once("Database.php");
     include_once("CommonCode.php");
     NavigationBar($arrayOfTranslations["ProductBtn"]);
+    $connection = new mysqli("localhost", "root","","webshop");
     ?>
     <div class="welcome divCentered">
         <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.8rem; color: #3b3b5c; margin-bottom: 18px; letter-spacing: 1px;">
@@ -21,18 +23,22 @@
 
     <div class="allDivs">
         <?php
-        $fileProducts = fopen("Products.csv", "r");
-        $headerOfTable = fgets($fileProducts);
-        while (!feof($fileProducts)) {
-            $oneProduct = fgets($fileProducts);
-            $individualItemComponents = explode(";", $oneProduct);
-            if (count($individualItemComponents) == 6) {
+        $sqlQuery = $connection->prepare("SELECT * FROM products;");
+         $sqlQuery->execute();
+         $result = $sqlQuery->get_result();
+        while ($row=$result->fetch_assoc()) {
+            if (count($row) == 7) {
         ?>
                 <div class="divStyle">
-                    <div class="productNameDivStyle"><?= $individualItemComponents[($language == "english") ? 0 : 5] ?></div>
-                    <img src="Pictures/<?= $individualItemComponents[1] ?>" alt="Brake Pads" style="width:180px; height:180px; object-fit:cover; border-radius:8px;">
-                    <div class="colorWite"><?= $individualItemComponents[2] ?></div>
-                    <div><?= $individualItemComponents[($language == "english") ? 3 : 4] ?></div>
+                    <div class="productNameDivStyle"><?= $row[($language == "english") ? "ProductNameEN" : "ProductNameRU"] ?></div>
+                    <img src="Pictures/<?= $row["ImageLink"] ?>" alt="Brake Pads" style="width:180px; height:180px; object-fit:cover; border-radius:8px;">
+                    <div class="colorWite"><?= $row["Price"] ?></div>
+                    <div><?= $row[($language == "english") ? "DescriptionEN" : "DescriptionRU"] ?></div>
+                    <form method="POST">
+                        <input type="text" placeholder="quantity" name="quantity" required>
+                        <input type="hidden" value="<?= $row["id"] ?>" name="productId">
+                        <input type="submit" value="Buy">
+                    </form>
                 </div>
         <?php
             }

@@ -1,6 +1,18 @@
 <?php
-
 session_start();
+include_once("Database.php");
+$connection = new mysqli("localhost", "root", "", "webshop");
+if (!isset($_SESSION["Cart"])) {
+    $_SESSION["Cart"] = [];
+}
+if (isset($_POST["productId"], $_POST["quantity"])) {
+    if (isset($_SESSION["Cart"][$_POST["productId"]])) {
+        $_SESSION["Cart"]["productId"] =  $_SESSION["Cart"]["productId"] + $_POST["quantity"];
+    } else {
+        $_SESSION["Cart"][$_POST["productId"]] = $_POST["quantity"];
+    }
+}
+
 if (isset($_POST["logout"])) {
     session_unset();
     session_destroy();
@@ -17,19 +29,17 @@ if (!isset($_SESSION["UserLogged"]) && !isset($_SESSION["Admin"])) {
 
 $language = isset($_GET["lang"]) ? $_GET["lang"] : "english";
 $arrayOfTranslations = [];
-$fileTranslation = fopen("Translation.csv", "r");
-while (($line = fgets($fileTranslation)) !== false) {
-    $line = trim($line);
-    if ($line === "") continue;
-    $parts = explode(";", $line);
-    if (count($parts) < 3) continue;
-    $key = $parts[0];
+$sqlQuery = $connection->prepare("SELECT * FROM translations;");
+$sqlQuery->execute();
+$result = $sqlQuery->get_result();
+while ($row = $result->fetch_assoc()) {
+    if (count($row) < 3) continue;
+    $key = $row["TranslationsKey"];
     $arrayOfTranslations[$key] = ($language === "english")
-        ? $parts[1]
-        : $parts[2];
+        ? $row["EnglishText"]
+        : $row["RussianText"];
 }
 
-fclose($fileTranslation);
 function NavigationBar($currentPage)
 {
     global $arrayOfTranslations, $language;
@@ -60,25 +70,27 @@ function NavigationBar($currentPage)
                 <?= $arrayOfTranslations["LoginBtn"] ?>
             </a>
         <?php else : ?>
-            <span> <?=$arrayOfTranslations["WelcomeBtn"] . $_SESSION["Username"] ?>!</span>
+            <span> <?= $arrayOfTranslations["WelcomeBtn"] . $_SESSION["Username"] ?>!</span>
         <?php endif; ?>
         <?php if ($_SESSION["UserLogged"]) : ?>
             <form method="post" style="display:inline;">
                 <input type="hidden" name="logout" value="1">
-                <button class="btnLogout"type="submit">Logout</button>
-                <?php
-        if ($_SESSION["Admin"] === "yes") {
+                <button class="btnLogout" type="submit">Logout</button>
+            </form>
+
+            <?php
+            if ($_SESSION["Admin"] === "yes") {
             ?>
-        </form>
-        <a href="Admin.php?lang=<?= $language ?>"
+
+                <a href="Admin.php?lang=<?= $language ?>"
                     <?= ($currentPage === $arrayOfTranslations["AdminBtn"]) ? "class='highlight'" : "" ?>>
                     <?= $arrayOfTranslations["AdminBtn"] ?>
                 </a>
-          <?php  
-        }
+        <?php
+            }
         endif; ?>
 
-
+        <a href="Cart.php?lang=<?= $language ?>" class="navBar"><img src="Images/Cart.jpg" alt="Cart" style="width:40px; height:40px; vertical-align:middle;"></a>
         <!-- Language selector -->
         <form method="get" class="langForm" style="display:inline-block; margin-left:20px;">
             <select name="lang" onchange="this.form.submit()">
@@ -97,69 +109,60 @@ function NavigationBar($currentPage)
 function verifyUserCredentials($checkedUser, $checkedPsw)
 {
     global $adminUser;
-    $fHandler = @fopen("Client.csv", "r");
-    if (!$fHandler) return false;
+    $connection = new mysqli("localhost", "root", "", "webshop");
+    $sqlQuery = $connection->prepare("SELECT * FROM client;");
+    $sqlQuery->execute();
+    $result = $sqlQuery->get_result();
 
-    while (($line = fgets($fHandler)) !== false) {
-        $line = trim($line);
-        if ($line === "") continue;
+    while ($row = $result->fetch_assoc()) {
+        if ($row === "") continue;
+        if (strtolower($row["Username"]) === "username") continue;
 
-        $items = explode(";", $line);
-        if (strtolower($items[0]) === "username") continue;
-
-        $fileUser = trim($items[0] ?? "");
-        $filePsw  = trim($items[1] ?? "");
+        $fileUser = trim($row["Username"] ?? "");
+        $filePsw  = trim($row["UserPassword"] ?? "");
 
         if ($fileUser === $checkedUser) {
-           
+
 
             // If CSV contains plaintext password — allow direct match
             if ($filePsw === $checkedPsw) {
-                 if ($items[2] == "yes") {
-                    $_SESSION["Admin"] = $items[2];
-                }
-                else {
+                if ($row["UserAdmin"] == "yes") {
+                    $_SESSION["Admin"] = $row["UserAdmin"];
+                } else {
                     $_SESSION["Admin"] = "no";
                 }
-                fclose($fHandler);
                 return true;
             }
 
             // Otherwise check bcrypt hash
-            if (password_verify($checkedPsw, $filePsw)) { 
-                if ($items[2] == "yes") {
-                    $_SESSION["Admin"] = $items[2];
-                }
-                else {
+            if (password_verify($checkedPsw, $filePsw)) {
+                if ($row["UserAdmin"] == "yes") {
+                    $_SESSION["Admin"] = $row["UserAdmin"];
+                } else {
                     $_SESSION["Admin"] = "no";
                 }
-                fclose($fHandler);
                 return true;
             }
             // Username found but password wrong
-            fclose($fHandler);
             return false;
         }
     }
 
-    fclose($fHandler);
     return false;
 }
 
 
 function userAlreadyRegistered($checkedUser)
 {
-
-    $fHandler = @fopen("Client.csv", "r");
-    if (!$fHandler) return false;
-    while (($line = fgets($fHandler)) !== false) {
-        $items = explode(";", trim($line));
-        if ($items[0] === $checkedUser) {
-            fclose($fHandler);
+    $connection = new mysqli("localhost", "root", "", "webshop");
+    $sqlQuery = $connection->prepare("SELECT * FROM client;");
+    $sqlQuery->execute();
+    $result = $sqlQuery->get_result();
+    while (($row = $result->fetch_assoc())) {
+        if ($row["Username"] === $checkedUser) {
             return true;
         }
     }
-    fclose($fHandler);
     return false;
 }
 

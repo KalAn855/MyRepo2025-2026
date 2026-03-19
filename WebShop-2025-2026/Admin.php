@@ -1,5 +1,6 @@
 <?php
 include_once("CommonCode.php");
+include_once("Database.php");
 
 if (!isset($_SESSION["UserLogged"]) || $_SESSION["UserLogged"] !== true || $_SESSION["Admin"] !== "yes") {
     header("Location: Login.php");

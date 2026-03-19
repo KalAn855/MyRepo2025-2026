@@ -10,6 +10,7 @@
 
 <body>
     <?php
+    include_once("Database.php");
     include_once("CommonCode.php");
     NavigationBar($arrayOfTranslations["RegisterBtn"]);
     ?>
@@ -25,9 +26,10 @@
                 $psw = password_hash($_POST["psw"], PASSWORD_DEFAULT);
                 $adminUser = "no";
                 //append new user to Client.csv
-                $fHandler = fopen("Client.csv", "a");
-                fwrite($fHandler, "\n" . $_POST["userName"] . ";" . $psw. ";" . $adminUser);
-                fclose($fHandler);
+                $connection = new mysqli("localhost", "root","","webshop");
+                $sqlQuery = $connection->prepare("INSERT INTO client (Username, UserPassword, UserAdmin) VALUES(?, ?, ?);");
+                $sqlQuery->bind_param("sss", $_POST["userName"], $psw, $adminUser);
+                $sqlQuery->execute();
             } else {
                 $bShowForm = true;
                 print("Passwords do not match or user alredy exists, please try again.");
