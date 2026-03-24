@@ -77,7 +77,9 @@ function NavigationBar($currentPage)
                 <input type="hidden" name="logout" value="1">
                 <button class="btnLogout" type="submit">Logout</button>
             </form>
-
+            <a href ="Forum.php?lang=<?= $language ?>" <?= ($currentPage === "Forum") ? "class='highlight'" : "" ?>>
+                Forum
+            </a>
             <?php
             if ($_SESSION["Admin"] === "yes") {
             ?>
@@ -86,11 +88,11 @@ function NavigationBar($currentPage)
                     <?= ($currentPage === $arrayOfTranslations["AdminBtn"]) ? "class='highlight'" : "" ?>>
                     <?= $arrayOfTranslations["AdminBtn"] ?>
                 </a>
+                 <a href="Cart.php?lang=<?= $language ?>" class="navBar"><img src="Images/Cart.jpg" alt="Cart" style="width:40px; height:40px; vertical-align:middle;"></a>
         <?php
             }
         endif; ?>
 
-        <a href="Cart.php?lang=<?= $language ?>" class="navBar"><img src="Images/Cart.jpg" alt="Cart" style="width:40px; height:40px; vertical-align:middle;"></a>
         <!-- Language selector -->
         <form method="get" class="langForm" style="display:inline-block; margin-left:20px;">
             <select name="lang" onchange="this.form.submit()">

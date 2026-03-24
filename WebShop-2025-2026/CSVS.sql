@@ -20,11 +20,17 @@ create table Translations (
 
 create table Client (
     id int auto_increment primary key,
-    Username VARCHAR(255),
+    Username VARCHAR(255) not null unique,
     UserPassword VARCHAR(255),
     UserAdmin CHAR(3)
 );
 
+create table Messages (
+    id int auto_increment primary key,
+    MessageText VARCHAR(255),
+    Username VARCHAR(255) not null,
+    Foreign key (Username) references Client(Username)
+);
 insert into Products 
 (ProductNameEN, ImageLink, Price, DescriptionEN, DescriptionRU, ProductNameRU)
 values
@@ -94,7 +100,3 @@ insert into Client
 values
 ('Admin', '$2y$10$dJMyu5MDp8tg5XeC6cUqOeSvFkyOQgsZdGCKr6PwuF5tCt/7g6TyC', 'yes'),
 ('uwu', '$2y$10$E1p.qJTeSYehDa20TQ3WtenfukIu6YkCs8c6VfElN6IFVBS5udO4C', 'no');
-
-SELECT * FROM Products;
-SELECT * FROM Client;
-SELECT * FROM Translations;
