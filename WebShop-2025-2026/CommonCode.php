@@ -72,13 +72,14 @@ function NavigationBar($currentPage)
         <?php else : ?>
             <span> <?= $arrayOfTranslations["WelcomeBtn"] . $_SESSION["Username"] ?>!</span>
         <?php endif; ?>
-        <?php if ($_SESSION["UserLogged"]) : ?>
+        <?php if ($_SESSION["UserLogged"]) 
+            { ?>
             <form method="post" style="display:inline;">
                 <input type="hidden" name="logout" value="1">
                 <button class="btnLogout" type="submit">Logout</button>
             </form>
-            <a href ="Forum.php?lang=<?= $language ?>" <?= ($currentPage === "Forum") ? "class='highlight'" : "" ?>>
-                Forum
+         <a href ="Forum.php?lang=<?= $language ?>" <?= ($currentPage === $arrayOfTranslations["ForumText"]) ? "class='highlight'" : "" ?>>
+                <?= $arrayOfTranslations["ForumText"] ?>
             </a>
             <?php
             if ($_SESSION["Admin"] === "yes") {
@@ -88,10 +89,14 @@ function NavigationBar($currentPage)
                     <?= ($currentPage === $arrayOfTranslations["AdminBtn"]) ? "class='highlight'" : "" ?>>
                     <?= $arrayOfTranslations["AdminBtn"] ?>
                 </a>
-                 <a href="Cart.php?lang=<?= $language ?>" class="navBar"><img src="Images/Cart.jpg" alt="Cart" style="width:40px; height:40px; vertical-align:middle;"></a>
         <?php
             }
-        endif; ?>
+            else {
+            ?>
+            <a href="Cart.php?lang=<?= $language ?>" class="navBar"><img src="Images/Cart.jpg" alt="Cart" style="width:40px; height:40px; vertical-align:middle;"></a>
+            <?php
+            }
+        } ?>
 
         <!-- Language selector -->
         <form method="get" class="langForm" style="display:inline-block; margin-left:20px;">

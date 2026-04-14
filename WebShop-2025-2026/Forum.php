@@ -11,15 +11,22 @@
 include_once("Database.php");
 include_once("CommonCode.php");
 NavigationBar("Forum");
+
 if (isset($_POST["newMessage"])) {
-    $_POST["newMessage"] = 
-    $sqlQuery = $connection->prepare("INSERT INTO Messages (MessageText, Username) VALUES (?, ?);");
-    $sqlQuery->bind_param("ss", $_POST["newMessage"], $_SESSION["Username"]);
+
+    $message = $_POST["newMessage"];
+    $username = $_SESSION["Username"];
+
+    $sqlQuery = $connection->prepare(
+        "INSERT INTO Messages (MessageText, Username) VALUES (?, ?);"
+    );
+
+    $sqlQuery->bind_param("ss", $message, $username);
     $sqlQuery->execute();
 }
 ?>
 <body>
-  <h1 style="color: white;">Forum</h1>
+  <h1 style="color: white;"><?= $arrayOfTranslations["ForumText"] ?></h1>
   <div id ="AllPreviousMessages">
     <?php 
     $sqlSelect = $connection->prepare("SELECT * FROM Messages;");
@@ -28,16 +35,16 @@ if (isset($_POST["newMessage"])) {
     while ($row = $result->fetch_assoc()) {
         ?>
         <br>
-            User <?= $row["Username"] ?> wrote: <?= $row["MessageText"] ?>
+            User <?= htmlspecialchars($row["User"]) ?> wrote: <?= htmlspecialchars($row["MessageText"]) ?>
         <?php
     }
     ?>
   </div>
   <div id="NewMessage" style="color: white;">
-    <h2>Post a new message</h2>
+    <h2><?= $arrayOfTranslations["NewMessage"] ?></h2>
     <form method="post">
-        <input type="text" name="newMessage" placeholder="Your message here..." required>
-        <button type="submit" value="SendMessage">Send</button>
+        <input type="text" name="newMessage" placeholder="<?= $arrayOfTranslations["NewMessage"] ?>" required>
+        <button type="submit" name ="SendMessage" value="SendMessage"><?= $arrayOfTranslations["SendMessage"] ?></button>
     </form>
   </div>
 </body>

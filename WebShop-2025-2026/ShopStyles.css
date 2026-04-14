@@ -251,3 +251,16 @@ th {
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+.cartCount {
+    position: absolute;
+    top: -2px;
+    right: -6px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 18px;
+    text-align: center;
+}

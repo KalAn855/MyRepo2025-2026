@@ -1,4 +1,5 @@
-create or replace database WebShop;
+drop database WebShop;
+create database WebShop;
 use WebShop;
 
 create table Products (
@@ -93,7 +94,10 @@ values
 ('ItemName','Item','Товар'),
 ('Quantity','Quantity','Количество'),
 ('BuyBtn','Buy','Купить'),
-('Admin',' (Admin)',' (Администратор)');
+('ForumText','Forum','Форум'),
+('SendMessage','Send Message','Отправить'),
+('NewMessage','New Message','Новое сообщение'),
+('AllPreviousMessages','All Previous Messages','Все предыдущие сообщения');
 
 insert into Client
 (Username, UserPassword, UserAdmin)

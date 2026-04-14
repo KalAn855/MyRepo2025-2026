@@ -10,14 +10,18 @@
 <?php
 include_once("Database.php");
 include_once("CommonCode.php");
+if ($_SESSION["UserLogged"] === false) {
+    header("Location: Login.php?lang=" . $language);
+    exit();
+}
 NavigationBar("Cart.php");
 ?>
 
 <?php
- if (isset($_POST["removeProduct"])) {
-        $productRemove = $_POST["removeProduct"];
-        unset($_SESSION["Cart"][$productRemove]);
-    }
+if (isset($_POST["removeProduct"])) {
+    $productRemove = $_POST["removeProduct"];
+    unset($_SESSION["Cart"][$productRemove]);
+}
 ?>
 <body>
     <?php
@@ -48,10 +52,11 @@ NavigationBar("Cart.php");
                     <td><?= $product["ProductNameEN"] ?></td>
                     <td><?= $itemQuantity ?></td>
                     <td><form method="POST" style="display: inline;">
-                                <button type="submit" name="removeProduct" value="<?= $itemid ?>" class="removeBtn">
-                                    <?= $arrayOfTranslations["RemoveBtn"] ?>
-                                </button>
-                            </form></td>
+                            <button type="submit" name="removeProduct" value="<?= $itemid ?>" class="removeBtn">
+                                <?= $arrayOfTranslations["RemoveBtn"] ?>
+                            </button>
+                        </form>
+</td>
                 </tr>
             <?php
             }
