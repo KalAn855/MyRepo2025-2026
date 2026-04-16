@@ -264,3 +264,12 @@ th {
     min-width: 18px;
     text-align: center;
 }
+.cartIcon{
+    position: relative;
+    display: inline-block;
+}
+
+.cartIcon img{
+    width:40px;
+    height:40px;
+}

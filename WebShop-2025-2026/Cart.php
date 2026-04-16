@@ -14,15 +14,13 @@ if ($_SESSION["UserLogged"] === false) {
     header("Location: Login.php?lang=" . $language);
     exit();
 }
-NavigationBar("Cart.php");
-?>
-
-<?php
 if (isset($_POST["removeProduct"])) {
     $productRemove = $_POST["removeProduct"];
     unset($_SESSION["Cart"][$productRemove]);
 }
+NavigationBar("Cart.php");
 ?>
+
 <body>
     <?php
     ?>

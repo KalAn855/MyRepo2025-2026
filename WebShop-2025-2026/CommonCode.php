@@ -7,7 +7,7 @@ if (!isset($_SESSION["Cart"])) {
 }
 if (isset($_POST["productId"], $_POST["quantity"])) {
     if (isset($_SESSION["Cart"][$_POST["productId"]])) {
-        $_SESSION["Cart"]["productId"] =  $_SESSION["Cart"]["productId"] + $_POST["quantity"];
+        $_SESSION["Cart"][$_POST["productId"]] += $_POST["quantity"];
     } else {
         $_SESSION["Cart"][$_POST["productId"]] = $_POST["quantity"];
     }
@@ -72,13 +72,12 @@ function NavigationBar($currentPage)
         <?php else : ?>
             <span> <?= $arrayOfTranslations["WelcomeBtn"] . $_SESSION["Username"] ?>!</span>
         <?php endif; ?>
-        <?php if ($_SESSION["UserLogged"]) 
-            { ?>
+        <?php if ($_SESSION["UserLogged"]) { ?>
             <form method="post" style="display:inline;">
                 <input type="hidden" name="logout" value="1">
                 <button class="btnLogout" type="submit">Logout</button>
             </form>
-         <a href ="Forum.php?lang=<?= $language ?>" <?= ($currentPage === $arrayOfTranslations["ForumText"]) ? "class='highlight'" : "" ?>>
+            <a href="Forum.php?lang=<?= $language ?>" <?= ($currentPage === $arrayOfTranslations["ForumText"]) ? "class='highlight'" : "" ?>>
                 <?= $arrayOfTranslations["ForumText"] ?>
             </a>
             <?php
@@ -89,12 +88,25 @@ function NavigationBar($currentPage)
                     <?= ($currentPage === $arrayOfTranslations["AdminBtn"]) ? "class='highlight'" : "" ?>>
                     <?= $arrayOfTranslations["AdminBtn"] ?>
                 </a>
-        <?php
-            }
-            else {
-            ?>
-            <a href="Cart.php?lang=<?= $language ?>" class="navBar"><img src="Images/Cart.jpg" alt="Cart" style="width:40px; height:40px; vertical-align:middle;"></a>
             <?php
+            } else {
+            ?>
+                <?php
+                $cartCount = 0;
+                if (isset($_SESSION["Cart"])) {
+                    foreach ($_SESSION["Cart"] as $qty) {
+                        $cartCount += $qty;
+                    }
+                }
+                ?>
+
+                <a href="Cart.php?lang=<?= $language ?>" class="cartIcon">
+                    <img src="Images/Cart.jpg" alt="Cart">
+                    <?php if ($cartCount > 0): ?>
+                        <span class="cartCount"><?= $cartCount ?></span>
+                    <?php endif; ?>
+                </a>
+        <?php
             }
         } ?>
 

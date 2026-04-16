@@ -35,7 +35,7 @@ if (isset($_POST["newMessage"])) {
     while ($row = $result->fetch_assoc()) {
         ?>
         <br>
-            User <?= htmlspecialchars($row["User"]) ?> wrote: <?= htmlspecialchars($row["MessageText"]) ?>
+            User <?= htmlspecialchars($row["Username"]) ?> wrote: <?= htmlspecialchars($row["MessageText"]) ?>
         <?php
     }
     ?>
